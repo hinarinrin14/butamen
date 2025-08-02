@@ -1,0 +1,340 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+    margin: 0;
+}
+
+/*ボタン外側※レイアウトによってpositionや形状は適宜変更してください*/
+.openbtn{
+	position: fixed;/*ボタン内側の基点となるためrelativeを指定*/
+	background:#D54884;
+	cursor: pointer;
+    width: 50px;
+    height:50px;
+	border-radius: 5px;
+	z-index: 9989; /* z-indexを追加して前面に表示 */
+	display: block;
+	right: 10px;
+	top: 15px;
+	
+	
+}
+
+/*ボタン内側*/
+.openbtn span{
+    display: inline-block;
+    transition: all .4s;/*アニメーションの設定*/
+    position: absolute;
+    left: 14px;
+    height: 2px;
+    border-radius: 5px;
+	background: #fff;
+  	width: 45%;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+	
+  }
+
+
+.openbtn span:nth-of-type(1) {
+	top:13px;	
+}
+
+.openbtn span:nth-of-type(2) {
+	top:19px;
+}
+
+.openbtn span:nth-of-type(3) {
+	top:25px;
+}
+
+.openbtn span:nth-of-type(3)::after {
+	content:"Menu";/*3つ目の要素のafterにMenu表示を指定*/
+	position: absolute;
+	top:5px;
+	left:-2px;
+	color: #fff;
+	font-size: 0.6rem;
+	text-transform: uppercase;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+	
+}
+
+/*activeクラスが付与されると線が回転して×になり、Menu⇒Closeに変更*/
+
+.openbtn.active span:nth-of-type(1) {
+    top: 14px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+}
+
+.openbtn.active span:nth-of-type(2) {
+	opacity: 0;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+}
+
+.openbtn.active span:nth-of-type(3){
+    top: 26px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+}
+
+.openbtn.active span:nth-of-type(3)::after {
+	content:"Close";/*3つ目の要素のafterにClose表示を指定*/
+    transform: translateY(0) rotate(-45deg);
+	top:5px;
+	left:4px;
+	z-index: 9990; /* z-indexを追加して前面に表示 */
+}
+
+
+
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav{
+    /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+    position:fixed;
+    z-index: 999;
+    /*ナビのスタート位置と形状*/
+	top:0;
+    right: -120%;
+	width:100%;
+    height: 100vh;/*ナビの高さ*/
+	background:#F1E5D9;
+    /*動き*/
+	transition: all 0.6s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+    right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+	
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+	list-style: none;
+    text-align: center;
+	z-index: 1000;
+}
+
+#g-nav li a{
+	color: #333;
+	text-decoration: none;
+	padding:10px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: bold;
+}
+
+
+.logo {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.logo img {
+    width: 70px;
+    height: auto;
+}
+
+.scrollify {
+    width: 100%;
+    height: 100vh;
+}
+      
+
+
+.title1 {
+    text-align: center;
+    font-size: 190px;
+    font-family: "Monomaniac One", sans-serif;
+    margin: 0; /* マージンをリセット */
+    padding-top: 80px; /* 上部の余白 */
+}
+.title2 {
+    text-align: center;
+    font-size: 100px; 
+    font-family: "Hachi Maru Pop", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0; /* マージンをリセット */
+    padding-top: 70px; /* 上部の余白 */
+}
+
+.title3 {
+	text-align: center;
+    font-size: 95px; 
+    font-family: "Hachi Maru Pop", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0; /* マージンをリセット */
+    padding-top: 20px; /* 上部の余白 */
+	
+}
+
+
+.twitter-tweet {
+	transform: scale(0.7);
+}
+.setumei {
+	text-align: left;
+    font-size: 42px; 
+    font-family: "Yusei Magic", sans-serif;
+	line-height: 2;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0; /* マージンをリセット */
+    padding-top: 70px; /* 上部の余白 */
+	
+	
+}
+.content {
+    text-align: center; /* 中央揃え */
+    margin-top: 10px; /* タイトルの真下に配置 */
+	display: flex;
+    justify-content: center; /* 水平中央揃え */
+    align-items: center; /* 垂直中央揃え */
+            
+}
+
+
+.section1-image {
+    width: 40%;
+    position: absolute;
+    bottom: 90px; /* 画面の下から90pxの位置に配置 */
+    animation: float 3s ease-in-out infinite; /* アニメーションの設定 */
+}
+
+/*========= 画像ふわふわ ===============*/
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); /* 元の位置 */
+    }
+    50% {
+        transform: translateY(-20px); /* 上に20px動かす */
+    }
+}
+
+/*========= 1文字ずつ出現させるためのCSS ===============*/
+
+.eachTextAnime span{opacity: 0;}
+.eachTextAnime.appeartext span{ animation:text_anime_on 1s ease-out forwards; }
+@keyframes text_anime_on {
+	0% {opacity:0;}
+	100% {opacity:1;}
+}
+.text-container{
+	text-align: center;
+	line-height: 2;
+	padding-top: 75px; /* 上部の余白 */
+	font-family: "Yusei Magic", sans-serif;
+	font-size: 50px; 
+}
+
+/*========= スクロールダウンのためのCSS ===============*/
+
+/*====== 9-1-1 縦線が動いてスクロールを促す =======*/
+
+/*スクロールダウン全体の場所*/
+.scrolldown1{
+    /*描画位置※位置は適宜調整してください*/
+	position:absolute;
+	left:50%;
+	bottom:65px;
+    /*全体の高さ*/
+	height:50px;
+}
+
+/*Scrollテキストの描写*/
+.scrolldown1 span{
+    /*描画位置*/
+	position: absolute;
+	left:-15px;
+	top: -15px;
+    /*テキストの形状*/
+	color: #eee;
+	font-size: 0.7rem;
+	letter-spacing: 0.05em;
+}
+
+/* 線の描写 */
+.scrolldown1::after{
+	content: "";
+    /*描画位置*/
+	position: absolute;
+	top: 0;
+    /*線の形状*/
+	width: 1.3px;
+	height: 30px;
+	background: #eee;
+    /*線の動き1.4秒かけて動く。永遠にループ*/
+	animation: pathmove 1.4s ease-in-out infinite;
+	opacity:0;
+}
+
+/*高さ・位置・透過が変化して線が上から下に動く*/
+@keyframes pathmove{
+	0%{
+		height:0;
+		top:0;
+		opacity: 0;
+	}
+	30%{
+		height:30px;
+		opacity: 1;
+	}
+	100%{
+		height:0;
+		top:50px;
+		opacity: 0;
+	}
+}
+
+/* 他のセクションのスタイル */
+.section02 {
+    background-color: #4CAF50;
+}
+
+.section03 {
+    background-color: #2196F3;
+}
+
+.section04 {
+    background-color: #FF5722;
+}
+
+
